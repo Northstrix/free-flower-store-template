@@ -1,0 +1,265 @@
+
+{
+  "dataset_rules": {
+    "spacing_measurement": "Use each plant's recommended mature spacing as the baseline for optimal growth.",
+    "spacing_deficit_definition": "spacing_deficit = recommended_spacing - actual_spacing, where actual_spacing is less than recommended_spacing.",
+    "spacing_step": "Evaluate spacing deficit in 0.25-inch increments.",
+    "grow_insufficiency_coefficient": "A derived penalty score estimating reduced plant performance due to insufficient spacing.",
+    "coefficient_interpretation": "Represents estimated percent reduction in combined growth performance including height, bloom count, bloom size, and vigor.",
+    "progression_rule": "Penalty must monotonically increase or remain constant as spacing deficit increases.",
+    "piecewise_behavior": "Small spacing deficits cause minor penalties; moderate deficits increase penalties gradually; severe deficits sharply increase penalties.",
+    "output_format": "All numeric values are floats.",
+    "units": {
+      "height": "inches",
+      "spacing": "inches",
+      "flower_size": "inches (approximate bloom diameter)",
+      "water_need": "inches of water per week",
+      "bloom_intensity": "index from 1.0 (low) to 10.0 (very high)",
+      "price": "USD"
+    },
+    "model_note": "The grow insufficiency coefficient is a decision-support model, not a direct biological measurement."
+  },
+  "flowers": [
+    {
+      "id": "rose",
+      "flower_name": "Rose",
+      "price": 45.0,
+      "min_height": 24.0,
+      "max_height": 72.0,
+      "avg_flower_count": 25.0,
+      "bloom_intensity": 8.5,
+      "flower_size": 4.5,
+      "recommended_spacing": 36.0,
+      "water_need": 1.5,
+      "image": "/products/rose.webp",
+      "grow_insufficiency_profile": [
+        {"deficit": 0.25, "penalty": 1.0},
+        {"deficit": 1.0, "penalty": 4.0},
+        {"deficit": 4.0, "penalty": 15.0},
+        {"deficit": 8.0, "penalty": 35.0},
+        {"deficit": 12.0, "penalty": 55.0},
+        {"deficit": 18.0, "penalty": 75.0}
+      ]
+    },
+    {
+      "id": "tulip",
+      "flower_name": "Tulip",
+      "price": 12.0,
+      "min_height": 10.0,
+      "max_height": 24.0,
+      "avg_flower_count": 1.0,
+      "bloom_intensity": 6.5,
+      "flower_size": 2.5,
+      "recommended_spacing": 5.0,
+      "water_need": 1.0,
+      "image": "/products/tulip.webp",
+      "grow_insufficiency_profile": [
+        {"deficit": 0.25, "penalty": 2.0},
+        {"deficit": 1.0, "penalty": 6.0},
+        {"deficit": 2.0, "penalty": 15.0},
+        {"deficit": 3.0, "penalty": 30.0},
+        {"deficit": 4.0, "penalty": 50.0}
+      ]
+    },
+    {
+      "id": "sunflower",
+      "flower_name": "Sunflower",
+      "price": 18.0,
+      "min_height": 36.0,
+      "max_height": 144.0,
+      "avg_flower_count": 5.0,
+      "bloom_intensity": 9.0,
+      "flower_size": 10.0,
+      "recommended_spacing": 24.0,
+      "water_need": 1.5,
+      "image": "/products/sunflower.webp",
+      "grow_insufficiency_profile": [
+        {"deficit": 0.25, "penalty": 1.0},
+        {"deficit": 2.0, "penalty": 6.0},
+        {"deficit": 6.0, "penalty": 20.0},
+        {"deficit": 10.0, "penalty": 40.0},
+        {"deficit": 14.0, "penalty": 60.0}
+      ]
+    },
+    {
+      "id": "daisy",
+      "flower_name": "Daisy",
+      "price": 8.5,
+      "min_height": 12.0,
+      "max_height": 36.0,
+      "avg_flower_count": 40.0,
+      "bloom_intensity": 8.0,
+      "flower_size": 2.0,
+      "recommended_spacing": 18.0,
+      "water_need": 1.0,
+      "image": "/products/daisy.webp",
+      "grow_insufficiency_profile": [
+        {"deficit": 0.25, "penalty": 1.5},
+        {"deficit": 2.0, "penalty": 10.0},
+        {"deficit": 5.0, "penalty": 25.0},
+        {"deficit": 9.0, "penalty": 45.0},
+        {"deficit": 13.0, "penalty": 65.0}
+      ]
+    },
+    {
+      "id": "lily",
+      "flower_name": "Lily",
+      "price": 22.0,
+      "min_height": 24.0,
+      "max_height": 72.0,
+      "avg_flower_count": 10.0,
+      "bloom_intensity": 7.5,
+      "flower_size": 5.0,
+      "recommended_spacing": 12.0,
+      "water_need": 1.2,
+      "image": "/products/lily.webp",
+      "grow_insufficiency_profile": [
+        {"deficit": 0.25, "penalty": 1.0},
+        {"deficit": 1.0, "penalty": 5.0},
+        {"deficit": 3.0, "penalty": 18.0},
+        {"deficit": 6.0, "penalty": 35.0},
+        {"deficit": 9.0, "penalty": 55.0}
+      ]
+    },
+    {
+      "id": "orchid",
+      "flower_name": "Orchid",
+      "price": 65.0,
+      "min_height": 12.0,
+      "max_height": 36.0,
+      "avg_flower_count": 8.0,
+      "bloom_intensity": 9.5,
+      "flower_size": 3.5,
+      "recommended_spacing": 10.0,
+      "water_need": 0.8,
+      "image": "/products/orchid.webp",
+      "grow_insufficiency_profile": [
+        {"deficit": 0.25, "penalty": 2.0},
+        {"deficit": 1.0, "penalty": 8.0},
+        {"deficit": 3.0, "penalty": 25.0},
+        {"deficit": 6.0, "penalty": 50.0},
+        {"deficit": 8.0, "penalty": 70.0}
+      ]
+    },
+    {
+      "id": "marigold",
+      "flower_name": "Marigold",
+      "price": 7.0,
+      "min_height": 6.0,
+      "max_height": 24.0,
+      "avg_flower_count": 35.0,
+      "bloom_intensity": 8.5,
+      "flower_size": 2.5,
+      "recommended_spacing": 10.0,
+      "water_need": 0.8,
+      "image": "/products/marigold.webp",
+      "grow_insufficiency_profile": [
+        {"deficit": 0.25, "penalty": 1.0},
+        {"deficit": 1.0, "penalty": 5.0},
+        {"deficit": 3.0, "penalty": 15.0},
+        {"deficit": 5.0, "penalty": 30.0},
+        {"deficit": 8.0, "penalty": 50.0}
+      ]
+    },
+    {
+      "id": "petunia",
+      "flower_name": "Petunia",
+      "price": 9.0,
+      "min_height": 6.0,
+      "max_height": 18.0,
+      "avg_flower_count": 50.0,
+      "bloom_intensity": 9.0,
+      "flower_size": 3.0,
+      "recommended_spacing": 12.0,
+      "water_need": 1.0,
+      "image": "/products/petunia.webp",
+      "grow_insufficiency_profile": [
+        {"deficit": 0.25, "penalty": 1.5},
+        {"deficit": 2.0, "penalty": 10.0},
+        {"deficit": 4.0, "penalty": 25.0},
+        {"deficit": 7.0, "penalty": 45.0},
+        {"deficit": 10.0, "penalty": 65.0}
+      ]
+    },
+    {
+      "id": "lavender",
+      "flower_name": "Lavender",
+      "price": 14.5,
+      "min_height": 12.0,
+      "max_height": 36.0,
+      "avg_flower_count": 60.0,
+      "bloom_intensity": 7.0,
+      "flower_size": 1.0,
+      "recommended_spacing": 24.0,
+      "water_need": 0.6,
+      "image": "/products/lavender.webp",
+      "grow_insufficiency_profile": [
+        {"deficit": 0.25, "penalty": 1.0},
+        {"deficit": 3.0, "penalty": 12.0},
+        {"deficit": 6.0, "penalty": 28.0},
+        {"deficit": 10.0, "penalty": 50.0},
+        {"deficit": 14.0, "penalty": 70.0}
+      ]
+    },
+    {
+      "id": "zinnia",
+      "flower_name": "Zinnia",
+      "price": 6.0,
+      "min_height": 12.0,
+      "max_height": 48.0,
+      "avg_flower_count": 45.0,
+      "bloom_intensity": 9.0,
+      "flower_size": 3.5,
+      "recommended_spacing": 12.0,
+      "water_need": 1.0,
+      "image": "/products/zinnia.webp",
+      "grow_insufficiency_profile": [
+        {"deficit": 0.25, "penalty": 1.0},
+        {"deficit": 2.0, "penalty": 8.0},
+        {"deficit": 5.0, "penalty": 22.0},
+        {"deficit": 8.0, "penalty": 40.0},
+        {"deficit": 11.0, "penalty": 60.0}
+      ]
+    },
+    {
+      "id": "hydrangea",
+      "flower_name": "Hydrangea",
+      "price": 38.0,
+      "min_height": 36.0,
+      "max_height": 120.0,
+      "avg_flower_count": 20.0,
+      "bloom_intensity": 8.5,
+      "flower_size": 6.0,
+      "recommended_spacing": 60.0,
+      "water_need": 2.0,
+      "image": "/products/hydrangea.webp",
+      "grow_insufficiency_profile": [
+        {"deficit": 0.25, "penalty": 1.0},
+        {"deficit": 5.0, "penalty": 10.0},
+        {"deficit": 15.0, "penalty": 30.0},
+        {"deficit": 25.0, "penalty": 55.0},
+        {"deficit": 35.0, "penalty": 75.0}
+      ]
+    },
+    {
+      "id": "peony",
+      "flower_name": "Peony",
+      "price": 55.0,
+      "min_height": 24.0,
+      "max_height": 48.0,
+      "avg_flower_count": 15.0,
+      "bloom_intensity": 8.0,
+      "flower_size": 5.5,
+      "recommended_spacing": 36.0,
+      "water_need": 1.2,
+      "image": "/products/peony.webp",
+      "grow_insufficiency_profile": [
+        {"deficit": 0.25, "penalty": 1.0},
+        {"deficit": 3.0, "penalty": 12.0},
+        {"deficit": 8.0, "penalty": 30.0},
+        {"deficit": 12.0, "penalty": 50.0},
+        {"deficit": 18.0, "penalty": 70.0}
+      ]
+    }
+  ]
+}

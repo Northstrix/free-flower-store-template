@@ -1,2 +1,5 @@
-# free-flower-store-template
-A free, open-source flower store template distributed under the MIT License.
+# Firebase Studio
+
+This is a NextJS starter in Firebase Studio.
+
+To get started, take a look at src/app/page.tsx.

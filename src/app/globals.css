@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Hex Color Assignments */
+  --background: #050505;
+  --foreground: #fafafa;
+  --card: #0a0a0a;
+  --popover: #0a0a0a;
+  --accent: #39C73B;
+  --primary: var(--accent);
+  --muted: #262626;
+  --muted-foreground: #999999;
+  --border: #3b3b3b;
+  --secondary-border: #232323;
+  --lightened-primary: color-mix(
+    in srgb,
+    var(--foreground) 64%,
+    var(--primary) 36%
+  );
+  --theme-red: #C73B39;
+  
+  --logo-default-flower: var(--foreground);
+  --logo-default-stamen: var(--accent);
+  --logo-default-instrument: #3B39C7;
+  
+  --logo-hover-flower: #397EC7;
+  --logo-hover-stamen: var(--foreground);
+  --logo-hover-instrument: var(--accent);
+
+  --radius: 0px;
+  --eased-gradient: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.73) 0%,
+    rgba(0, 0, 0, 0.73) 45%,
+    rgba(0, 0, 0, 0.730) 45.0%,
+    rgba(0, 0, 0, 0.591) 50.5%,
+    rgba(0, 0, 0, 0.467) 56.0%,
+    rgba(0, 0, 0, 0.358) 61.5%,
+    rgba(0, 0, 0, 0.263) 67.0%,
+    rgba(0, 0, 0, 0.182) 72.5%,
+    rgba(0, 0, 0, 0.117) 78.0%,
+    rgba(0, 0, 0, 0.066) 83.5%,
+    rgba(0, 0, 0, 0.029) 89.0%,
+    rgba(0, 0, 0, 0.007) 94.5%,
+    rgba(0, 0, 0, 0.000) 100.0%
+  );
+  --eased-shadow-height: 50%;
+
+  --hero-enter: 92;
+  --hero-hold: 42;
+  --hero-exit: 36;
+  --hero-pause: 44;
+  --hero-stagger: 8;
+  --hero-spread: 16;
+  --hero-offset: 32;
+
+  --hero-min-intensity: 0.40;
+  --hero-max-intensity: 1.00;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scrollbar-color: var(--primary) var(--secondary-border);
+    scrollbar-width: thin;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply font-body antialiased;
+    overflow: hidden;
+  }
+}
+
+body,
+.custom-scrollbar {
+  scrollbar-color: var(--primary) var(--secondary-border);
+  scrollbar-width: thin;
+}
+
+body::-webkit-scrollbar,
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+body::-webkit-scrollbar-track,
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--secondary-border);
+}
+
+body::-webkit-scrollbar-thumb,
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border: 2px solid var(--secondary-border);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body::-webkit-scrollbar-thumb:hover,
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+body::-webkit-scrollbar-corner,
+.custom-scrollbar::-webkit-scrollbar-corner {
+  background: var(--secondary-border);
+}
+
+body::-webkit-scrollbar-button,
+.custom-scrollbar::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+  visibility: hidden;
+}
+
+body::-webkit-scrollbar-button:single-button,
+.custom-scrollbar::-webkit-scrollbar-button:single-button,
+body::-webkit-scrollbar-button:increment,
+.custom-scrollbar::-webkit-scrollbar-button:increment,
+body::-webkit-scrollbar-button:decrement,
+.custom-scrollbar::-webkit-scrollbar-button:decrement {
+  width: 0;
+  height: 0;
+  display: none;
+  visibility: hidden;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.hero-title {
+  font-family: 'Recursive', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+}
+
+.mono-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+}
+
+.specimen-card-content {
+  background: var(--eased-gradient) !important;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: var(--eased-shadow-height, 50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
